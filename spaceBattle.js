@@ -17,8 +17,6 @@ console.log(
 );
 
 
-
-const { get } = require("https");
 let {fightOptions} = require("./fightOptions.js");
 
 let playGame = (userInput) => {
@@ -29,29 +27,30 @@ let playGame = (userInput) => {
 process.stdin.on("data", playGame);
 
 
-const ourShip = {
-    hull: 20,
-    firepower: 5,
-    accurarcy: 0.7
-}
+// const ourShip = {
+//     hull: 20,
+//     firepower: 5,
+//     accurarcy: 0.7
+// }
 
-class enemyShipClass {
-  constructor () {
-    this.e_hull = Math.random() * 3 + 3;
-    this.e_firepower = Math.random() * 2 + 2;
-    this.e_accuracy = Math.random() * 0.2 + 0.6;
-  }
-}
+// class enemyShipClass {
+//   constructor () {
+//     this.e_hull = Math.random() * 3 + 3;
+//     this.e_firepower = Math.random() * 2 + 2;
+//     this.e_accuracy = Math.random() * 0.2 + 0.6;
+//   }
+// }
 
-const shipsArray =[]
+// const shipsArray =[]
 
-for (i=0; i<6; i++){
-  const enemyShips = new enemyShipClass()
-  shipsArray.push(enemyShips)
-}
+// for (i=0; i<6; i++){
+//   const enemyShips = new enemyShipClass()
+//   shipsArray.push(enemyShips)
+// }
 
-console.log(shipsArray)
+// console.log(shipsArray)
 
 // if(ourShip.accurarcy > shipsArray[0].e_accuracy){
 
 // }
+
