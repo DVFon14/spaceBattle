@@ -19,38 +19,48 @@ const enemyShips = new enemyShipClass()
 shipsArray.push(enemyShips)
 }
 
-//console.log(shipsArray)
-
 
 
 module.exports = {
   fightOptions: (fightInput) => {
+    
+    console.log("fightinput is ", fightInput);
     if (fightInput == 1) {
       console.log("Brave soldier! Let's begin");
       //we're going to need a for loop here, where i=0; i<6; i++ to iterate through every ship.
-      console.log(ourShip.accuracy)
-      console.log(shipsArray[0].e_accuracy)
+
 
       
       if(ourShip.accuracy > shipsArray[0].e_accuracy){ //if we hit
-        console.log(`Due to your superior accuracy, you hit the enemy ship! Their hull is now ${shipsArray[0].e_firepower-ourShip.firepower}`)
+        const newEnemyHull = shipsArray[0].e_hull-ourShip.firepower
+        console.log(`Due to your superior accuracy, you hit the enemy ship! Their hull is now ${newEnemyHull}`)
         
-        if(shipsArray[0].e_firepower-ourShip.firepower <0 ){ //if we Destroy the ship on our first hit
+
+        if(newEnemyHull <= 0 ){ //if we Destroy the ship on our first hit
           console.log(`Congratulations, soldier! You have defeated this enemy ship.`)
+          console.log(`Press 1 to continue attacking or 2 to retreat`)
+
+
+          let {retreat} = require("./retreat.js");
+
+          let continueGame = (userInput2) => {
+            let input2 = userInput2;
+            retreat(input2);
+          };
+
+          process.stdin.on("data", continueGame);
+
 
         } 
       
       
       }
-      else {
-        console.log('You missed! Take better aim, next time!')
+      else if (ourShip.accuracy < shipsArray[0].e_accuracy) {
+        console.log('You missed! Take better aim next time!')
+        console.log(`It is their turn to attack. Since their firepower is ${shipsArray[0].e_firepower}, our hull is no ${ourShip.hull-shipsArray[0].e_firepower}`)
       }
     
         
-
-
-
-
 
 
 
@@ -70,3 +80,26 @@ module.exports = {
 
 
 
+// let {retreat} = require("./retreat.js");
+
+// let continueGame = (userInput2) => {
+//   let input2 = userInput2;
+//   retreat(input2);
+// };
+
+// process.stdin.on("data", continueGame);
+
+
+
+
+
+
+
+
+
+
+
+      // console.log(ourShip.accuracy)
+      // console.log(`This is their accuracy ${shipsArray[0].e_accuracy}`)
+      // console.log(`This is their firepower ${shipsArray[0].e_firepower}`)
+      // console.log(`This is their hull ${shipsArray[0].e_hull}`)

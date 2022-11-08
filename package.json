@@ -4,7 +4,7 @@
     "nodemon": "^2.0.20"
   },
   "name": "spacebattle",
-  "description": "",
+  "description": "function getRandomArbitrary(min, max) {     return Math.random() * (max - min) + min;   }",
   "version": "1.0.0",
   "main": "spaceBattle.js",
   "scripts": {
